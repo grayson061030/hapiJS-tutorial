@@ -1,4 +1,5 @@
-// import the mongoose
+'use strict';
+
 const mongoose = require('mongoose');
 // get the schema class from mongoose
 const Schema = mongoose.Schema;
