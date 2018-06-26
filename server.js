@@ -22,7 +22,7 @@ server.route({
     path: '/',
     method: 'GET',
     handler(req,reply) {
-        reply('Welcome to Hapijs course');
+        reply('Welcome to HapiJs');
     }
 });
 
