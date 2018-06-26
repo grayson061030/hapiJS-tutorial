@@ -3,10 +3,6 @@ const Company = require('../models/company.model');
 
 module.exports = {
     create(req,reply){
-        // console.log(req.info);
-        if(!req.payload.name){
-            return reply({error: 'name is required field'}).code(400);
-        }
         Company.create({
             name: req.payload.name,
             city: req.payload.city,
@@ -27,9 +23,6 @@ module.exports = {
         });
     },
     findById(req,reply){
-        if(!req.params.id){
-            return reply({error: 'id is required param'}).code(400);
-        }
         Company.findById(req.params.id,(err,company)=>{
             if(err){
                 return reply(err).code(404);
@@ -38,9 +31,6 @@ module.exports = {
         });
     },
     update(req,reply){
-        if(!req.params.id){
-            return reply({error: 'id is required param'}).code(400);
-        }
         let attributes = {};
         if(req.payload.name){
             attributes.name = req.payload.name;
@@ -59,9 +49,6 @@ module.exports = {
         });
     },
     delete(req,reply){
-        if(!req.params.id){
-            return reply({error: 'id is required param'}).code(400);
-        }
         Company.findByIdAndRemove(req.params.id,(err,result)=>{
             if(err){
                 return reply(err).code(500);
