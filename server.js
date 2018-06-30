@@ -1,11 +1,11 @@
 'use strict';
 
 const hapi = require('hapi');
-const companyRoutes = require('./routes/company.routes');
 const HapiSwagger = require('hapi-swagger');
 const Inert = require('inert');
 const Vision = require('vision');
-const MongoosePlugin = require('./plugins/mongoose.plugin')
+const MongoosePlugin = require('./plugins/mongoose.plugin');
+const CompanyModule = require('./modules/company.module');
 const server = new hapi.Server();
 server.connection({host:'localhost',port: '3000'});
 
@@ -17,9 +17,6 @@ server.route({
         reply('Welcome to HapiJs Tutorial');
     }
 });
-
-//routes
-server.route(companyRoutes);
 
 //plugins [swagger,mongoose]
 server.register([
@@ -39,7 +36,8 @@ server.register([
                 version: '0.0.1'
             }
         }
-    }
+    },
+    CompanyModule
 ], (err) => {
     if(err) {
         throw err;
