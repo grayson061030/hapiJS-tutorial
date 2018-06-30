@@ -14,47 +14,64 @@ module.exports = [
     {
         path: '/api/companies',
         method: 'POST',
-        handler: CompanyController.create,
         config: {
             validate: {
                 payload: schema
-            }
+            },
+            handler: CompanyController.create,
+            description: 'Create new Company',
+            tags: ['api'],
+            notes: 'Response new created Company'
         }
     },
     {
         path: '/api/companies/{id}',
         method: 'GET',
-        handler: CompanyController.findById,
         config: {
             validate: {
                 params: Joi.object().keys({
                     id: Joi.string().required()
                 })
-            }
+            },
+            handler: CompanyController.findById,
+            tags: ['api'],
+            description: 'Find Company By Id',
+            notes: 'Response a Company'
         }
     },
     {
         path: '/api/companies/{id}',
         method: 'PUT',
-        handler: CompanyController.update,
         config: {
             validate: {
                 params: Joi.object().keys({
                     id: Joi.string().required()
+                }),
+                payload: Joi.object().keys({
+                    name: Joi.string().optional(),
+                    city: Joi.string().optional(),
+                    address: Joi.string().optional(),
                 })
-            }
+            },
+            handler: CompanyController.update,
+            tags: ['api'],
+            description: 'Update Company By Id',
+            notes: 'Response update Company'
         }
     },
     {
         path: '/api/companies/{id}',
         method: 'DELETE',
-        handler: CompanyController.delete,
         config: {
             validate: {
                 params: Joi.object().keys({
                     id: Joi.string().required()
                 })
-            }
+            },
+            handler: CompanyController.delete,
+            tags: ['api'],
+            description: 'Find Company By Id',
+            notes: 'Response a Company'
         }
     },
     {
@@ -62,10 +79,9 @@ module.exports = [
         method: 'GET',
         config: {
             handler: CompanyController.findAll,
-            response: {
-                schema: Joi.array().items(schema),
-                sample: 50
-            }
+            tags: ['api'],
+            description: 'Find all the Companies',
+            notes: 'Response all the Companies'
         }
     }
 ];

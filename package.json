@@ -12,6 +12,9 @@
   "dependencies": {
     "hapi": "^16.6.2",
     "joi": "^13.4.0",
-    "mongoose": "^5.1.6"
+    "mongoose": "^5.1.6",
+    "hapi-swagger": "^7.2.0",
+    "inert": "^4.0.2",
+    "vision": "^4.1.0"
   }
 }
