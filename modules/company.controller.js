@@ -1,8 +1,8 @@
 'use strict';
-const Company = require('../models/company.model');
+const Company = require('./company.model');
 
 module.exports = {
-    create(req,reply){
+    create(req,reply){ 
         Company.create({
             name: req.payload.name,
             city: req.payload.city,

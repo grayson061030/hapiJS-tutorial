@@ -1,6 +1,6 @@
 'use strict';
 
-const CompanyController = require('../controllers/company.controller');
+const CompanyController = require('./company.controller');
 const Joi = require('joi');
 
 // validate schema
