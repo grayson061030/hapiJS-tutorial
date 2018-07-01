@@ -2,18 +2,18 @@ const JobController = require('./job.controller');
 const Joi = require('joi');
 module.exports = [
     {
-        path: '/api/jobs',
+        path: '/jobs',
         method: 'GET',
         config: {
             handler: JobController.find,
-            tags: ['api'],
+            tags: ['api','Job'],
             description: 'Get all the Jobs',
             notes: 'Response all the Jobs with Company'
         }
 
     },
     {
-        path: '/api/jobs',
+        path: '/jobs',
         method: 'POST',
         config: {
             handler: JobController.create,
@@ -24,7 +24,7 @@ module.exports = [
                 })
             },
             description: 'Created new Job',
-            tags: ['api'],
+            tags: ['api','Job'],
             notes: 'Response new created Job'
         }
     },

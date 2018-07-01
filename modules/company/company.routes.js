@@ -10,7 +10,7 @@ const schema = Joi.object().keys({
 
 module.exports = [
     {
-        path: '/api/companies',
+        path: '/companies',
         method: 'POST',
         config: {
             validate: {
@@ -18,12 +18,12 @@ module.exports = [
             },
             handler: CompanyController.create,
             description: 'Create new Company',
-            tags: ['api'],
+            tags: ['api','Company'],
             notes: 'Response new created Company'
         }
     },
     {
-        path: '/api/companies/{id}',
+        path: '/companies/{id}',
         method: 'GET',
         config: {
             validate: {
@@ -32,13 +32,13 @@ module.exports = [
                 })
             },
             handler: CompanyController.findById,
-            tags: ['api'],
+            tags: ['api','Company'],
             description: 'Find Company By Id',
             notes: 'Response a Company'
         }
     },
     {
-        path: '/api/companies/{id}',
+        path: '/companies/{id}',
         method: 'PUT',
         config: {
             validate: {
@@ -52,13 +52,13 @@ module.exports = [
                 })
             },
             handler: CompanyController.update,
-            tags: ['api'],
+            tags: ['api','Company'],
             description: 'Update Company By Id',
             notes: 'Response update Company'
         }
     },
     {
-        path: '/api/companies/{id}',
+        path: '/companies/{id}',
         method: 'DELETE',
         config: {
             validate: {
@@ -67,17 +67,17 @@ module.exports = [
                 })
             },
             handler: CompanyController.delete,
-            tags: ['api'],
+            tags: ['api','Company'],
             description: 'Find Company By Id',
             notes: 'Response a Company'
         }
     },
     {
-        path: '/api/companies',
+        path: '/companies',
         method: 'GET',
         config: {
             handler: CompanyController.find,
-            tags: ['api'],
+            tags: ['api','Company'],
             description: 'Find all the Companies',
             notes: 'Response all the Companies'
         }

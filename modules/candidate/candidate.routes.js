@@ -2,17 +2,17 @@ const CandidateController = require('./candidate.controller');
 const Joi = require('joi');
 module.exports = [
     {
-        path: '/api/candidates',
+        path: '/candidates',
         method: 'GET',
         config: {
             handler: CandidateController.find,
-            tags: ['api'],
+            tags: ['api','Candidate'],
             description: 'Find all Candidates',
             notes: 'Response all Candidates'
         }
     },
     {
-        path: '/api/candidates',
+        path: '/candidates',
         method: 'POST',
         config: {
             handler: CandidateController.create,
@@ -24,7 +24,7 @@ module.exports = [
                     company: Joi.string().required(),
                 })
             },
-            tags: ['api'],
+            tags: ['api','Candidate'],
             description: 'Created new Candidate',
             notes: 'Response created Candidate'
         }

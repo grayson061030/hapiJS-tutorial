@@ -2,17 +2,17 @@ const ApplicationController = require('./application.controller');
 const Joi = require('joi');
 module.exports = [
     {
-        path: '/api/applications',
+        path: '/applications',
         method: 'GET',
         config: {
             handler: ApplicationController.find,
             description: 'Find all the Application',
-            tags: ['api'],
+            tags: ['api','Application'],
             notes: 'Response all the  Application'
         }
     },
     {
-        path: '/api/applications',
+        path: '/applications',
         method: 'POST',
         config: {
             handler: ApplicationController.create,
@@ -24,7 +24,7 @@ module.exports = [
                 })
             },
             description: 'Create new Application',
-            tags: ['api'],
+            tags: ['api','Application'],
             notes: 'Response new created Application'
         }
     }
