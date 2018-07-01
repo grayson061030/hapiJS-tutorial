@@ -1,4 +1,3 @@
-'use strict';
 const companyRoutes = require('./company.routes');
 const CompanyModule = {
     register: function (server, options, next) {
@@ -9,6 +8,6 @@ const CompanyModule = {
 
 CompanyModule.register.attributes = {
     name: 'CompanyModule',
-    pkg: require('../package.json')
+    pkg: require('../../package.json')
 };
 module.exports = CompanyModule;

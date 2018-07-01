@@ -1,5 +1,3 @@
-'use strict';
-
 const CompanyController = require('./company.controller');
 const Joi = require('joi');
 
@@ -78,7 +76,7 @@ module.exports = [
         path: '/api/companies',
         method: 'GET',
         config: {
-            handler: CompanyController.findAll,
+            handler: CompanyController.find,
             tags: ['api'],
             description: 'Find all the Companies',
             notes: 'Response all the Companies'

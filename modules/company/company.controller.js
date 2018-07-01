@@ -1,4 +1,3 @@
-'use strict';
 const Company = require('./company.model');
 
 module.exports = {
@@ -14,13 +13,15 @@ module.exports = {
             return reply.response(savedCompany);
         });
     },
-    findAll(req,reply){
-        Company.find({},(err,companies)=>{
-            if(err){
-                return reply(err).code(404);
-            }
+    async find(req,reply){
+        try {
+            const companies = await Company.find({})
+                .populate('candidates')
+                .populate('jobs');
             return reply.response(companies);
-        });
+        } catch (err){
+            throw err;
+        }
     },
     findById(req,reply){
         Company.findById(req.params.id,(err,company)=>{
