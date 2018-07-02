@@ -8,7 +8,12 @@ module.exports = [
             handler: ApplicationController.find,
             description: 'Find all the Application',
             tags: ['api','Application'],
-            notes: 'Response all the  Application'
+            notes: 'Response all the  Application',
+            validate: {
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
+            }
         }
     },
     {
@@ -21,7 +26,10 @@ module.exports = [
                     hired: Joi.boolean().optional(),
                     job: Joi.string().required(),
                     candidate: Joi.string().required(),
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             description: 'Create new Application',
             tags: ['api','Application'],

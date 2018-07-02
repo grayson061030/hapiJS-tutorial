@@ -8,6 +8,7 @@ const HapiSwagger = require('hapi-swagger');
 const Inert = require('inert');
 const Vision = require('vision');
 
+
 module.exports = [
     {
         register: MongoosePlugin,
@@ -26,6 +27,7 @@ module.exports = [
             }
         }
     },
+    require('hapi-auth-jwt2'),
     CompanyModule,
     ApplicationModule,
     CandidateModule,

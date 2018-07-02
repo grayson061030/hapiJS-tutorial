@@ -8,9 +8,13 @@ module.exports = [
             handler: JobController.find,
             tags: ['api','Job'],
             description: 'Get all the Jobs',
-            notes: 'Response all the Jobs with Company'
+            notes: 'Response all the Jobs with Company',
+            validate: {
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
+            }
         }
-
     },
     {
         path: '/jobs',
@@ -21,7 +25,10 @@ module.exports = [
                 payload: Joi.object().keys({
                     title: Joi.string().required(),
                     company: Joi.string().required()
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             description: 'Created new Job',
             tags: ['api','Job'],
