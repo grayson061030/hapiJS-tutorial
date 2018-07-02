@@ -2,8 +2,9 @@ const hapi = require('hapi');
 const server = new hapi.Server();
 const plugins = require('./config/plugins');
 const JwtService = require('./services/jwt.service');
+const config = require('./config/development');
 
-server.connection({host:'localhost',port: '3000'});
+server.connection({host:config.host,port: config.port});
 
 
 server.register(plugins,(err) => {
@@ -15,7 +16,7 @@ server.register(plugins,(err) => {
             throw err;
         };
         server.auth.strategy('jwt','jwt',{
-            key: '4@#$5234asd',
+            key: config.secret,
             verifyOptions: {
                 algorithm: ['HS256']
             },

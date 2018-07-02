@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = '4@#$5234asd';
 const User = require('../modules/user/user.model');
+const config = require('../config/development');
 
 module.exports = {
     issue(options){
         let {payload, expiresIn} = options;
-        return jwt.sign(payload,SECRET_KEY,{
+        return jwt.sign(payload,config.secret,{
             expiresIn: expiresIn
         });
     },
