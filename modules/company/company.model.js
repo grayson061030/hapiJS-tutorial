@@ -14,11 +14,16 @@ const CompanySchema = new Schema({
         }
     ],
     jobs: [
-    {
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Job'
+        }
+    ],
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'Job'
+        required: true,
+        ref: 'User'
     }
-]
 });
 
 

@@ -1,17 +1,19 @@
 const Company = require('./company.model');
 
 module.exports = {
-    create(req,reply){ 
-        Company.create({
-            name: req.payload.name,
-            city: req.payload.city,
-            address: req.payload.address
-        },(err,savedCompany)=>{
-            if(err){
-                return reply(err).code(500);
-            }
-            return reply.response(savedCompany);
-        });
+    async create(req,reply){
+        try {
+            const company = await Company.create({
+                name: req.payload.name,
+                city: req.payload.city,
+                address: req.payload.address,
+                user: req.auth.credentials.id
+            });
+            return reply.response(company);
+        } catch (err) {
+            throw Boom.badImplementation('Could not create company');
+        }
+
     },
     async find(req,reply){
         try {
