@@ -9,7 +9,7 @@
     - authentication in headers
         json web token
     - validation with Joi
-        valide parameter value
+        validate parameter value
     - mongodb
         relation Entity with mongoose
     - logging
