@@ -14,7 +14,8 @@ module.exports = [
             },
             description: 'User can create new Account',
             tags: ['api','User'],
-            notes: 'Response new created User'
+            notes: 'Response new created User',
+            auth: false
         }
     },
     {
@@ -30,7 +31,8 @@ module.exports = [
             },
             description: 'User can Login  Account',
             tags: ['api','User'],
-            notes: 'Response JWT'
+            notes: 'Response JWT',
+            auth: false
         }
     }
 ]

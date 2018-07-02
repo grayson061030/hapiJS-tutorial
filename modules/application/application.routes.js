@@ -8,7 +8,12 @@ module.exports = [
             handler: ApplicationController.find,
             description: 'Find all the Application',
             tags: ['api','Application'],
-            notes: 'Response all the  Application'
+            notes: 'Response all the  Application',
+            validate: {
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
+            }
         }
     },
     {
