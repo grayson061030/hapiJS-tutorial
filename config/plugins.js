@@ -8,7 +8,42 @@ const HapiSwagger = require('hapi-swagger');
 const Inert = require('inert');
 const Vision = require('vision');
 
-
+const goodOptions = {
+    ops: {
+        interval: 3000
+    },
+    reporters: {
+        myConsoleReporter: [{
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{ log: '*', response: '*'}]
+        },{
+            module: 'good-console'
+        },'stdout'],
+        myFileReporter: [{
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{ ops: '*'}]
+        },{
+            module: 'good-squeeze',
+            name: 'SafeJson'
+        },{
+            module: 'good-file',
+            args: ['./logs/hapi-api.log']
+        }]
+        // myHTTPReporter: [{
+        //     module: 'good-squeeze',
+        //     name: [{ error: '*'}]
+        // },{
+        //     module: 'good-http',
+        //     args: ['http://prod.logs:3000',{
+        //         wreck: {
+        //             headers: {'x-api-key': 12345}
+        //         }
+        //     }]
+        // }]
+    }
+}
 module.exports = [
     {
         register: MongoosePlugin,
@@ -28,6 +63,10 @@ module.exports = [
         }
     },
     require('hapi-auth-jwt2'),
+    {
+        register: require('good'),
+        options: goodOptions
+    },
     CompanyModule,
     ApplicationModule,
     CandidateModule,
