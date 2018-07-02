@@ -8,7 +8,12 @@ module.exports = [
             handler: CandidateController.find,
             tags: ['api','Candidate'],
             description: 'Find all Candidates',
-            notes: 'Response all Candidates'
+            notes: 'Response all Candidates',
+            validate: {
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
+            }
         }
     },
     {
@@ -22,7 +27,10 @@ module.exports = [
                     last_name: Joi.string().required(),
                     email: Joi.string().required(),
                     company: Joi.string().required(),
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             tags: ['api','Candidate'],
             description: 'Created new Candidate',

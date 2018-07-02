@@ -14,7 +14,10 @@ module.exports = [
         method: 'POST',
         config: {
             validate: {
-                payload: schema
+                payload: schema,
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             handler: CompanyController.create,
             description: 'Create new Company',
@@ -29,7 +32,10 @@ module.exports = [
             validate: {
                 params: Joi.object().keys({
                     id: Joi.string().required()
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             handler: CompanyController.findById,
             tags: ['api','Company'],
@@ -49,7 +55,10 @@ module.exports = [
                     name: Joi.string().optional(),
                     city: Joi.string().optional(),
                     address: Joi.string().optional(),
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             handler: CompanyController.update,
             tags: ['api','Company'],
@@ -64,7 +73,10 @@ module.exports = [
             validate: {
                 params: Joi.object().keys({
                     id: Joi.string().required()
-                })
+                }),
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
             },
             handler: CompanyController.delete,
             tags: ['api','Company'],
@@ -79,7 +91,12 @@ module.exports = [
             handler: CompanyController.find,
             tags: ['api','Company'],
             description: 'Find all the Companies',
-            notes: 'Response all the Companies'
+            notes: 'Response all the Companies',
+            validate: {
+                headers: Joi.object({
+                    'authorization' : Joi.string().required()
+                }).unknown()
+            }
         }
     }
 ];
